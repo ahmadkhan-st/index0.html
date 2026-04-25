@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+}
+
+/* Envato Top Bar */
+.envato-header {
+    background-color: #000;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+    height: 40px;
+}
+
+.buy-btn {
+    background-color: #00a651;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* White Nav Bar */
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background: white;
+}
+
+.nav-logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    background: black;
+    padding: 15px 30px;
+    border-radius: 50px;
+    gap: 20px;
+}
+
+.nav-links li {
+    color: white;
+    cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 100px 10%;
+    background-image: radial-gradient(circle at 10% 20%, #ededed 1%, transparent 20%);
+}
+
+.hero h1 {
+    font-size: 3rem;
+    max-width: 800px;
+    margin: 0 auto 20px;
+}
+
+.hero p {
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+}
+
+.hero-btns {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn-orange {
+    background: #ff4d00;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-black {
+    background: black;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Portfolio Grid */
+.portfolio {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 50px 5%;
+}
+
+.card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card img {
+    width: 100%;
+    display: block;
+}
+
+/* Trust Section */
+.trust-section {
+    text-align: center;
+    padding: 60px 0;
+}
+
+.trust-section p {
+    font-family: serif;
+    color: #333;
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+}
+
+.logo-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    flex-wrap: wrap;
+    opacity: 0.7;
+    filter: grayscale(100%); /* Makes logos look professional and uniform */
+}
+
+.logo-item {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #444;
+}
+
+.logo-item img {
+    height: 30px;
+    margin-right: 10px;
+}
+/* This centers the black box on the screen */
+.testimonial-wrapper {
+    display: flex;
+    justify-content: center; /* Horizontal center */
+    align-items: center;     /* Vertical center */
+    min-height: 100vh;       /* Takes up full screen height */
+    background-color: #ffffff; /* White background around the box */
+    width: 100%;
+}
+
+/* The black box itself */
+.testimonial-box {
+    background-color: #000;
+    color: #fff;
+    padding: 60px 40px;
+    border-radius: 20px;     /* Rounded corners from your image */
+    max-width: 800px;        /* Keeps the text from getting too wide */
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.quote {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.orange {
+    color: #ff4d00;
+    font-weight: bold;
+}
+
+.profile-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    margin-bottom: 10px;
+}
+
+h4 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.name {
+    color: #ff4d00;
+    margin: 5px 0 0 0;
+}
+
+.services-section {
+    padding: 80px 5%;
+    text-align: center;
+    background-color: #fff;
+}
+
+.services-header {
+    margin-bottom: 50px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 50px;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.services-header h2 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Grid Layout */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Card Styling */
+.service-card {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    text-align: left;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* Soft shadow */
+    border: 1px solid #f0f0f0;
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+}
+
+.card-image img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover; /* Keeps images from stretching */
+}
+
+.card-content {
+    padding: 30px;
+}
+
+.card-content h3 {
+    margin: 0 0 15px 0;
+    font-size: 1.5rem;
+}
+
+.card-content p {
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Responsive for Mobile */
+@media (max-width: 900px) {
+    .services-grid {
+        grid-template-columns: 1fr; /* Stack cards on top of each other */
+    }
+}
+
+.benefits-section {
+    padding: 100px 5%;
+    text-align: center;
+    background-color: #fff;
+}
+
+.benefits-header h2 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.benefits-header p {
+    color: #666;
+    margin-bottom: 60px;
+}
+
+/* Grid Layout: 3 columns */
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Card Styling */
+.benefit-card {
+    padding: 40px 30px;
+    border: 1px solid #e0e0e0;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.benefit-card:hover {
+    border-color: #ff4d00; /* Orange border on hover */
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.icon {
+    font-size: 40px;
+    color: #ff4d00; /* Match your orange theme */
+    margin-bottom: 20px;
+}
+
+.benefit-card h3 {
+    font-size: 1.4rem;
+    margin: 0 0 10px 0;
+}
+
+.benefit-card p {
+    color: #777;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Responsive: 1 column on mobile */
+@media (max-width: 900px) {
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.pricing-section {
+    padding: 80px 5%;
+    text-align: center;
+    background-color: #fff;
+}
+
+.pricing-header h2 {
+    font-size: 3rem;
+    color: #0b1d3f; /* Dark blue/black heading */
+    margin-top: 10px;
+}
+
+.pricing-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 50px;
+    flex-wrap: wrap;
+}
+
+/* Card Design */
+.pricing-card {
+    border: 2px solid #ff4d00; /* Orange border */
+    border-radius: 20px;
+    padding: 40px;
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+}
+
+/* Badges at the top of cards */
+.plan-tag {
+    padding: 8px 25px;
+    border-radius: 50px;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.black-tag { background-color: black; }
+.orange-tag { background-color: #ff4d00; }
+
+/* Pricing Text */
+.price {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #ff4d00;
+    margin-bottom: 20px;
+}
+
+.currency { font-size: 2rem; vertical-align: super; }
+.period { font-size: 1rem; color: #333; font-weight: normal; }
+
+/* Features List */
+.features {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 40px 0;
+    color: #666;
+    line-height: 2;
+}
+
+.features li {
+    border-bottom: 1px solid #eee;
+    padding: 5px 0;
+}
+
+/* Orange Button */
+.book-btn {
+    background-color: #ff4d00;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 77, 0, 0.3);
+    transition: 0.3s;
+}
+
+.book-btn:hover {
+    transform: scale(1.05);
+    background-color: #e64500;
+}
+
+.projects-section {
+    padding: 80px 5%;
+    text-align: center;
+    background-color: #fff;
+}
+
+.projects-header h2 {
+    font-size: 3.5rem;
+    color: #0b1d3f;
+    margin: 10px 0;
+}
+
+.projects-header p {
+    color: #666;
+    font-size: 1.2rem;
+    margin-bottom: 50px;
+}
+
+/* Container for the whole section */
+.projects-section {
+    padding: 80px 0;
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center; /* Centers everything horizontally */
+}
+
+.projects-container {
+    width: 90%;
+    max-width: 1000px; /* This makes the section 'short' and centered */
+    text-align: center;
+}
+
+.projects-header h2 {
+    font-size: 2.5rem;
+    color: #0b1d3f;
+    margin: 10px 0;
+}
+
+.projects-header p {
+    color: #666;
+    margin-bottom: 40px;
+}
+
+/* Compact Grid Layout */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 20px; /* Space between cards */
+}
+
+.project-card {
+    background: #f4f4f4;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px); /* Subtle lift on hover */
+}
+
+.project-card img {
+    width: 100%;
+    height: 280px; /* Fixed height to keep it 'short' */
+    object-fit: cover; /* Prevents image stretching */
+    display: block;
+}
+
+/* Badge Styling */
+.badge {
+    display: inline-block;
+    padding: 6px 14px;
+    background: #fff5f0;
+    color: #ff4d00;
+    border: 1px solid #ff4d00;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* Responsive: Stacks on small mobile screens */
+@media (max-width: 600px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* --- Testimonial Slider --- */
+.slider-section {
+    overflow: hidden;
+    padding: 40px 0;
+    background: #fff;
+    white-space: nowrap;
+}
+
+.slider-track {
+    display: flex;
+    width: calc(250px * 10);
+    animation: scroll 20s linear infinite;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-250px * 5)); }
+}
+
+.mini-testimonial {
+    width: 300px;
+    background: #fff5ee; /* Light orange tint */
+    border: 1px solid #ff4d00;
+    border-radius: 15px;
+    padding: 20px;
+    margin-right: 20px;
+    white-space: normal;
+}
+
+.mini-testimonial p { font-size: 0.9rem; margin-bottom: 15px; }
+
+.user { display: flex; align-items: center; gap: 10px; }
+.user img { width: 40px; height: 40px; border-radius: 50%; }
+.user strong { display: block; font-size: 0.8rem; }
+.user span { font-size: 0.7rem; color: #777; }
+
+/* --- FAQ Section --- */
+.faq-section {
+    padding: 80px 5%;
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.faq-header h2 { font-size: 2.5rem; margin: 10px 0; }
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 40px;
+}
+
+.faq-item {
+    background: #f4f7fa;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.faq-item:hover { background: #e2e8f0; }
+.faq-item span { font-size: 0.8rem; color: #999; }
+
+/* Mobile View */
+@media (max-width: 768px) {
+    .faq-grid { grid-template-columns: 1fr; }
+}
+/* CTA Box Styling */
+.cta-section {
+    padding: 100px 5%;
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+}
+
+.cta-box {
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 60px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+    max-width: 600px;
+}
+
+.cta-box h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.cta-box p {
+    color: #777;
+    margin-bottom: 30px;
+}
+
+.cta-btn {
+    background: #ff4d00;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+.cta-logo {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+/* Footer Styling */
+.main-footer {
+    background-color: #fcfcfc;
+    padding: 60px 10%;
+    border-top: 1px solid #eee;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.footer-brand h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.5rem;
+}
+
+.footer-brand p {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.social-icons {
+    margin-top: 15px;
+    display: flex;
+    gap: 15px;
+    color: #555;
+}
+
+.footer-links {
+    display: flex;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+.link-group h4 {
+    font-size: 0.8rem;
+    color: #999;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.link-group a, .link-group p {
+    display: block;
+    text-decoration: none;
+    color: #444;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.link-group a:hover {
+    color: #ff4d00;
+}
+
+/* Responsive Footer */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .footer-links {
+        justify-content: center;
+        gap: 30px;
+    }
+}
+    </style>
+</head>
+<body>
+    <body>
+    <div class="envato-header">
+        <div class="logo"><span>🛒</span> envato <span>market</span></div>
+        <button class="buy-btn">Buy Now</button>
+    </div>
+
+    <nav class="main-nav">
+        <div class="nav-logo">Designpro</div>
+        <ul class="nav-links">
+            <li>Home</li>
+            <li>About</li>
+            <li>Buy</li>
+            <li>Projects</li>
+            <li>Contact</li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <h1>Hire Full-Service Design Agency For A Simple Monthly Fee.</h1>
+        <p>Create your products with top-tier designers at an affordable price. One subscription fee covers unlimited design requests.</p>
+        <div class="hero-btns">
+            <button class="btn-orange">See Pricing Plans</button>
+            <button class="btn-black">Book a free call</button>
+        </div>
+    </header>
+    <section class="portfolio">
+    <div class="card"><img src="images/download.jpg" alt="Work 1"></div>
+    <div class="card"><img src="images/download1.jpg" alt="Work 2"></div>
+    <div class="card"><img src="images/download2.jpg" alt="Work 3"></div>
+    <div class="card"><img src="images/download3.jpg" alt="Work 4"></div>
+</section>
+
+<section class="trust-section">
+    <p>Top companies trust us with their design</p>
+    <div class="logo-bar">
+        <div class="logo-item"><img src="logo1.png" alt="TrendLyft"> TrendLyft</div>
+        <div class="logo-item"><img src="logo2.png" alt="ZenZap"> ZenZap</div>
+        <div class="logo-item"><img src="logo3.png" alt="Craftgram"> Craftgram</div>
+        <div class="logo-item"><img src="logo4.png" alt="Swift"> swift</div>
+        <div class="logo-item"><img src="logo5.png" alt="Sparkle"> sparkle</div>
+    </div>
+</section>
+<section class="testimonial-wrapper">
+    <div class="testimonial-box">
+        <p class="quote">
+            <span class="orange">Designpro</span> took my billion-dollar baby idea, slapped their design magic on it, and boom – branding so good it makes my other ventures look like lemonade stands. <span class="orange">Twist</span> isn't just a design agency; they're your ticket to the big leagues.
+        </p>
+        
+        <div class="profile-area">
+            <img src="images/download4.jpg" class="avatar" alt="Mohammad Ali">
+            <h4>Junior Front-end Developer</h4>
+            <p class="name">Mushaba khan</p>
+        </div>
+    </div>
+</section>
+<section class="services-section">
+    <div class="services-header">
+        <span class="badge">↗ Services</span>
+        <h2>Apps, websites & branding</h2>
+    </div>
+
+    <div class="services-grid">
+        <div class="service-card">
+            <div class="card-image"><img src="images/download2.jpg" alt="Product Design"></div>
+            <div class="card-content">
+                <h3>Product Design</h3>
+                <p>Our subscription-based design service gives you access to a dedicated team.</p>
+            </div>
+        </div>
+
+        <div class="service-card">
+            <div class="card-image"><img src="images/download6.jpg" alt="Graphic Design"></div>
+            <div class="card-content">
+                <h3>Graphic Design</h3>
+                <p>Solve big problems and test new ideas quickly with a design sprint.</p>
+            </div>
+        </div>
+
+        <div class="service-card">
+            <div class="card-image"><img src="images/download7.jpg" alt="Marketing Design"></div>
+            <div class="card-content">
+                <h3>Marketing Design</h3>
+                <p>How our subscription-based design service with a team</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="benefits-section">
+    <div class="benefits-header">
+        <h2>Membership Benefits</h2>
+        <p>Perks so good you’ll never need to go anywhere else for your design.</p>
+    </div>
+
+    <div class="benefits-grid">
+        <div class="benefit-card">
+            <div class="icon">🌐</div>
+            <h3>Unlimited requests</h3>
+            <p>Unlimited design requests, prioritized by your needs</p>
+        </div>
+
+        <div class="benefit-card">
+            <div class="icon">🚀</div>
+            <h3>Lightning fast</h3>
+            <p>Tasks delivered in just 1–2 working business days.</p>
+        </div>
+
+        <div class="benefit-card">
+            <div class="icon">🔒</div>
+            <h3>No contracts</h3>
+            <p>Cancel your subscription at any time.</p>
+        </div>
+
+        <div class="benefit-card">
+            <div class="icon">💰</div>
+            <h3>No extra Charges</h3>
+            <p>Just fixed monthly subscription; No extra charges or fees.</p>
+        </div>
+
+        <div class="benefit-card">
+            <div class="icon">🍂</div>
+            <h3>Top-notch quality</h3>
+            <p>Access incredible design quality whenever you need it.</p>
+        </div>
+
+        <div class="benefit-card">
+            <div class="icon">🎧</div>
+            <h3>Risk-free Revisions</h3>
+            <p>Revise until 100% satisfied without any extra cost.</p>
+        </div>
+    </div>
+</section>
+<section class="pricing-section">
+    <div class="pricing-header">
+        <span class="badge">↗ Pricing</span>
+        <h2>Choose Your Membership</h2>
+    </div>
+
+    <div class="pricing-container">
+        <div class="pricing-card">
+            <span class="plan-tag black-tag">Standard</span>
+            <div class="price">
+                <span class="currency">$</span>19<span class="period">/month</span>
+            </div>
+            <ul class="features">
+                <li>Access to basic features</li>
+                <li>5 Projects</li>
+                <li>Email Support</li>
+            </ul>
+            <button class="book-btn">Book a call 👥</button>
+        </div>
+
+        <div class="pricing-card">
+            <span class="plan-tag orange-tag">Premium</span>
+            <div class="price">
+                <span class="currency">$</span>49<span class="period">/month</span>
+            </div>
+            <ul class="features">
+                <li>All features unlocked</li>
+                <li>Unlimited Projects</li>
+                <li>Priority Support</li>
+            </ul>
+            <button class="book-btn">Book a call 👥</button>
+        </div>
+    </div>
+</section>
+<section class="projects-section">
+    <div class="projects-container">
+        <div class="projects-header">
+            <span class="badge">↗ Projects</span>
+            <h2>Featured Projects</h2>
+            <p>Get a glimpse of our work</p>
+        </div>
+
+        <div class="projects-grid">
+            <div class="project-card"><img src="images/download.jpg" alt="Workflow"></div>
+            <div class="project-card"><img src="images/download1.jpg" alt="App UI"></div>
+            <div class="project-card"><img src="images/download2.jpg" alt="Mobile Dashboard"></div>
+            <div class="project-card"><img src="images/download3.jpg" alt="AI Playlist"></div>
+        </div>
+    </div>
+</section>
+<section class="slider-section">
+    <div class="slider-track">
+        <div class="mini-testimonial">
+            <p>"Financial planning help people to save their money in a smart way even if they don't know how."</p>
+            <div class="user">
+                <img src="images/download4.jpg" alt="Liane">
+                <div>
+                    <strong>Liane Marie</strong>
+                    <span>Product Designer</span>
+                </div>
+            </div>
+        </div>
+        <div class="mini-testimonial">
+            <p>"Designpro helped us scale our brand faster than we ever thought possible."</p>
+            <div class="user">
+                <img src="images/download4.jpg" alt="User">
+                <div>
+                    <strong>Alex Smith</strong>
+                    <span>Founder</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="faq-section">
+    <div class="faq-header">
+        <span class="badge">↗ Faqs</span>
+        <h2>Frequently Asked Question</h2>
+        <p>The most common questions about how our business works and what we can do for you.</p>
+    </div>
+
+    <div class="faq-grid">
+        <div class="faq-item">How long is this site live? <span>▶</span></div>
+        <div class="faq-item">Can I change the details you give me? <span>▶</span></div>
+        <div class="faq-item">Can I be informed anything I want on there? <span>▶</span></div>
+        <div class="faq-item">How many sites I can create at once? <span>▶</span></div>
+        <div class="faq-item">How can I migrate to another site? <span>▶</span></div>
+        <div class="faq-item">How can I communicate with you? <span>▶</span></div>
+    </div>
+</section>
+
+  
+</section>
+<section class="cta-section">
+    <div class="cta-box">
+        <h2>See if DesignPro is right for you. (It totally is.)</h2>
+        <p>Our team is here to assist you with any issues.</p>
+        <button class="cta-btn">Book a free call</button>
+        <div class="cta-logo">Designpro</div>
+    </div>
+</section>
+
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-brand">
+            <h3>Designpro</h3>
+            <p>Design, Code and Ship!</p>
+            <div class="social-icons">
+                <span>f</span> <span>t</span> <span>i</span> <span>in</span>
+            </div>
+        </div>
+        
+        <div class="footer-links">
+            <div class="link-group">
+                <h4>ABOUT</h4>
+                <a href="#">Company</a>
+                <a href="#">Blog</a>
+            </div>
+            <div class="link-group">
+                <h4>SUPPORT</h4>
+                <a href="#">Contact Support</a>
+            </div>
+            <div class="link-group">
+                <h4>PLATFORM</h4>
+                <a href="#">Pricing</a>
+                <a href="#">FAQ</a>
+            </div>
+            <div class="link-group">
+                <h4>CONTACT</h4>
+                <p>+923070707782</p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+
+</html>
