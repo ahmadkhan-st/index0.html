@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        projects-section {
+    padding: 80px 5%;
+    text-align: center;
+    background-color: #fff;
+}
+
+.projects-header h2 {
+    font-size: 3.5rem;
+    color: #0b1d3f;
+    margin: 10px 0;
+}
+
+.projects-header p {
+    color: #666;
+    font-size: 1.2rem;
+    margin-bottom: 50px;
+}
+
+/* Container for the whole section */
+.projects-section {
+    padding: 80px 0;
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center; /* Centers everything horizontally */
+}
+
+.projects-container {
+    width: 90%;
+    max-width: 1000px; /* This makes the section 'short' and centered */
+    text-align: center;
+}
+
+.projects-header h2 {
+    font-size: 2.5rem;
+    color: #0b1d3f;
+    margin: 10px 0;
+}
+
+.projects-header p {
+    color: #666;
+    margin-bottom: 40px;
+}
+
+/* Compact Grid Layout */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 20px; /* Space between cards */
+}
+
+.project-card {
+    background: #f4f4f4;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px); /* Subtle lift on hover */
+}
+
+.project-card img {
+    width: 100%;
+    height: 280px; /* Fixed height to keep it 'short' */
+    object-fit: cover; /* Prevents image stretching */
+    display: block;
+}
+
+/* Badge Styling */
+.badge {
+    display: inline-block;
+    padding: 6px 14px;
+    background: #fff5f0;
+    color: #ff4d00;
+    border: 1px solid #ff4d00;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* Responsive: Stacks on small mobile screens */
+@media (max-width: 600px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* --- Testimonial Slider --- */
+.slider-section {
+    overflow: hidden;
+    padding: 40px 0;
+    background: #fff;
+    white-space: nowrap;
+}
+
+.slider-track {
+    display: flex;
+    width: calc(250px * 10);
+    animation: scroll 20s linear infinite;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-250px * 5)); }
+}
+
+.mini-testimonial {
+    width: 300px;
+    background: #fff5ee; /* Light orange tint */
+    border: 1px solid #ff4d00;
+    border-radius: 15px;
+    padding: 20px;
+    margin-right: 20px;
+    white-space: normal;
+}
+
+.mini-testimonial p { font-size: 0.9rem; margin-bottom: 15px; }
+
+.user { display: flex; align-items: center; gap: 10px; }
+.user img { width: 40px; height: 40px; border-radius: 50%; }
+.user strong { display: block; font-size: 0.8rem; }
+.user span { font-size: 0.7rem; color: #777; }
+
+/* --- FAQ Section --- */
+.faq-section {
+    padding: 80px 5%;
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.faq-header h2 { font-size: 2.5rem; margin: 10px 0; }
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 40px;
+}
+
+.faq-item {
+    background: #f4f7fa;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.faq-item:hover { background: #e2e8f0; }
+.faq-item span { font-size: 0.8rem; color: #999; }
+
+/* Mobile View */
+@media (max-width: 768px) {
+    .faq-grid { grid-template-columns: 1fr; }
+}
+/* CTA Box Styling */
+.cta-section {
+    padding: 100px 5%;
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+}
+
+.cta-box {
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 60px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+    max-width: 600px;
+}
+
+.cta-box h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.cta-box p {
+    color: #777;
+    margin-bottom: 30px;
+}
+
+.cta-btn {
+    background: #ff4d00;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+.cta-logo {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+/* Footer Styling */
+.main-footer {
+    background-color: #fcfcfc;
+    padding: 60px 10%;
+    border-top: 1px solid #eee;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.footer-brand h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.5rem;
+}
+
+.footer-brand p {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.social-icons {
+    margin-top: 15px;
+    display: flex;
+    gap: 15px;
+    color: #555;
+}
+
+.footer-links {
+    display: flex;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+.link-group h4 {
+    font-size: 0.8rem;
+    color: #999;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.link-group a, .link-group p {
+    display: block;
+    text-decoration: none;
+    color: #444;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.link-group a:hover {
+    color: #ff4d00;
+}
+
+/* Responsive Footer */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .footer-links {
+        justify-content: center;
+        gap: 30px;
+    }
+}
+    </style>
+</head>
+<body>
+    <section class="projects-section">
+    <div class="projects-container">
+        <div class="projects-header">
+            <span class="badge">↗ Projects</span>
+            <h2>Featured Projects</h2>
+            <p>Get a glimpse of our work</p>
+        </div>
+
+        <div class="projects-grid">
+            <div class="project-card"><img src="images/download.jpg" alt="Workflow"></div>
+            <div class="project-card"><img src="images/download1.jpg" alt="App UI"></div>
+            <div class="project-card"><img src="images/download2.jpg" alt="Mobile Dashboard"></div>
+            <div class="project-card"><img src="images/download3.jpg" alt="AI Playlist"></div>
+        </div>
+    </div>
+</section>
+<section class="slider-section">
+    <div class="slider-track">
+        <div class="mini-testimonial">
+            <p>"Financial planning help people to save their money in a smart way even if they don't know how."</p>
+            <div class="user">
+                <img src="images/download4.jpg" alt="Liane">
+                <div>
+                    <strong>Liane Marie</strong>
+                    <span>Product Designer</span>
+                </div>
+            </div>
+        </div>
+        <div class="mini-testimonial">
+            <p>"Designpro helped us scale our brand faster than we ever thought possible."</p>
+            <div class="user">
+                <img src="images/download4.jpg" alt="User">
+                <div>
+                    <strong>Alex Smith</strong>
+                    <span>Founder</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="faq-section">
+    <div class="faq-header">
+        <span class="badge">↗ Faqs</span>
+        <h2>Frequently Asked Question</h2>
+        <p>The most common questions about how our business works and what we can do for you.</p>
+    </div>
+
+    <div class="faq-grid">
+        <div class="faq-item">How long is this site live? <span>▶</span></div>
+        <div class="faq-item">Can I change the details you give me? <span>▶</span></div>
+        <div class="faq-item">Can I be informed anything I want on there? <span>▶</span></div>
+        <div class="faq-item">How many sites I can create at once? <span>▶</span></div>
+        <div class="faq-item">How can I migrate to another site? <span>▶</span></div>
+        <div class="faq-item">How can I communicate with you? <span>▶</span></div>
+    </div>
+</section>
+
+  
+</section>
+<section class="cta-section">
+    <div class="cta-box">
+        <h2>See if DesignPro is right for you. (It totally is.)</h2>
+        <p>Our team is here to assist you with any issues.</p>
+        <button class="cta-btn">Book a free call</button>
+        <div class="cta-logo">Designpro</div>
+    </div>
+</section>
+
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-brand">
+            <h3>Designpro</h3>
+            <p>Design, Code and Ship!</p>
+            <div class="social-icons">
+                <span>f</span> <span>t</span> <span>i</span> <span>in</span>
+            </div>
+        </div>
+        
+        <div class="footer-links">
+            <div class="link-group">
+                <h4>ABOUT</h4>
+                <a href="#">Company</a>
+                <a href="#">Blog</a>
+            </div>
+            <div class="link-group">
+                <h4>SUPPORT</h4>
+                <a href="#">Contact Support</a>
+            </div>
+            <div class="link-group">
+                <h4>PLATFORM</h4>
+                <a href="#">Pricing</a>
+                <a href="#">FAQ</a>
+            </div>
+            <div class="link-group">
+                <h4>CONTACT</h4>
+                <p>+923070707782</p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+
+</html>
+</body>
+</html>
