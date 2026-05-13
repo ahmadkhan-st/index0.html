@@ -3,10 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    </nav>
     <title>Document</title>
     <style>
+     html{
+    scroll-behavior:smooth;
+}
+
+/* Scroll position fix */
+section{
+    scroll-margin-top:120px;
+}
+
+header{
+    scroll-margin-top:120px;
+}
         body {
     margin: 0;
     font-family: 'Arial', sans-serif;
@@ -24,6 +34,33 @@
     height: 40px;
 }
 
+/* Mobile button ko desktop par chhupane ke liye */
+.menu-button {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .menu-button { display: block; } /* Mobile par dikhao */
+    
+    .nav-links {
+        display: none; /* Pehle chhupa hua hoga */
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: black;
+        padding: 20px 0;
+    }
+
+    /* Jab checkbox check ho to menu dikhao */
+    #menu-toggle:checked ~ .nav-links {
+        display: flex;
+    }
+}
+
 .buy-btn {
     background-color: #00a651;
     color: white;
@@ -31,6 +68,11 @@
     padding: 5px 15px;
     border-radius: 4px;
     cursor: pointer;
+}
+@media (max-width: 768px) {
+    .menu-button {
+        display: block;
+    }
 }
 
 /* White Nav Bar */
@@ -60,6 +102,10 @@
     color: white;
     cursor: pointer;
 }
+#about-section {
+    scroll-margin-top: 200px; /* This creates a gap so the navbar doesn't cover the text */
+}
+
 
 /* Hero Section */
 .hero {
@@ -171,10 +217,9 @@
 /* This centers the black box on the screen */
 .testimonial-wrapper {
     display: flex;
-    justify-content: center; /* Horizontal center */
-    align-items: center;     /* Vertical center */
-    min-height: 100vh;       /* Takes up full screen height */
-    background-color: #ffffff; /* White background around the box */
+    justify-content: center;
+    align-items: center;
+    padding: 80px 5%;
     width: 100%;
 }
 
@@ -544,42 +589,56 @@ h4 {
         grid-template-columns: 1fr;
     }
 }
-/* --- Testimonial Slider --- */
-.slider-section {
-    overflow: hidden;
-    padding: 40px 0;
-    background: #fff;
-    white-space: nowrap;
-}
 
-.slider-track {
+
+.slider-container {
     display: flex;
-    width: calc(250px * 10);
-    animation: scroll 20s linear infinite;
+    gap: 30px;
+    width: 100%;
+    max-width: 1100px; /* Limits the total area */
+    margin: 0 auto;    /* Centers the slider on the page */
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding: 20px 0;
 }
 
-@keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-250px * 5)); }
-}
-
-.mini-testimonial {
-    width: 300px;
-    background: #fff5ee; /* Light orange tint */
-    border: 1px solid #ff4d00;
+.testimonial-card {
+    /* Set a fixed size to guarantee a square shape */
+    width: 450px; 
+    height: 450px; 
+    flex-shrink: 0; /* Prevents the box from squishing or stretching */
+    
+    background: #FFF8F1; 
+    border: 1px solid #FF4D00; 
     border-radius: 15px;
-    padding: 20px;
-    margin-right: 20px;
-    white-space: normal;
+    
+    /* Centers all text/images inside the square */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    padding: 40px;
+    text-align: center;
+    box-sizing: border-box;
+    scroll-snap-align: center;
 }
 
-.mini-testimonial p { font-size: 0.9rem; margin-bottom: 15px; }
+.slider-quote {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    max-width: 100%; /* Keeps text inside the box */
+}
 
-.user { display: flex; align-items: center; gap: 10px; }
-.user img { width: 40px; height: 40px; border-radius: 50%; }
-.user strong { display: block; font-size: 0.8rem; }
-.user span { font-size: 0.7rem; color: #777; }
-
+.user-avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
 /* --- FAQ Section --- */
 .faq-section {
     padding: 80px 5%;
@@ -730,6 +789,26 @@ h4 {
         gap: 30px;
     }
 }
+
+.main-footer {
+    background-color: #DDE1E7; /* Light gray background */
+    padding: 20px 0;
+    text-align: center;
+    width: 100%;
+    border-top: 1px solid #ccc;
+}
+
+.main-footer p {
+    margin: 0;
+    font-family: sans-serif;
+    color: #a1a1a1;
+    font-size: 0.9rem;
+}
+
+.main-footer .highlight {
+    color: #FF4D00; /* Orange color for the name */
+    font-weight: bold;
+}
     </style>
 </head>
 <body>
@@ -739,18 +818,27 @@ h4 {
         <button class="buy-btn">Buy Now</button>
     </div>
 
-    <nav class="main-nav">
-        <div class="nav-logo">Designpro</div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="buy.html">Buy</a></li>
-    <li><a href="projects.html">Projects</a></li>
-    <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
+<nav class="main-nav">
+    <div class="nav-logo">Designpro</div>
+    <label for="menu-toggle" class="menu-button">☰</label>
 
-    <header class="hero">
+    <ul class="nav-links">
+        <li><a href="#home" style="color:white;text-decoration:none;">Home</a></li>
+
+        <li><a href="#about" style="color:white;text-decoration:none;">About</a></li>
+
+        <li><a href="#services" style="color:white;text-decoration:none;">Buy</a></li>
+
+        <li><a href="#pricing" style="color:white;text-decoration:none;">project</a></li>
+
+        <li><a href="#projects" style="color:white;text-decoration:none;">Contact</a></li>
+
+    </ul>
+</nav>
+
+</section>
+
+   <header id="home" class="hero">
         <h1>Hire Full-Service Design Agency For A Simple Monthly Fee.</h1>
         <p>Create your products with top-tier designers at an affordable price. One subscription fee covers unlimited design requests.</p>
         <div class="hero-btns">
@@ -759,36 +847,35 @@ h4 {
         </div>
     </header>
     <section class="portfolio">
-    <div class="card"><img src="download.jpg" alt="Work 1"></div>
-    <div class="card"><img src="download1.jpg" alt="Work 2"></div>
-    <div class="card"><img src="download2.jpg" alt="Work 3"></div>
-    <div class="card"><img src="download3.jpg" alt="Work 4"></div>
+    <div class="card"><img src="images/download.jpg" alt="Work 1"></div>
+    <div class="card"><img src="images/download1.jpg" alt="Work 2"></div>
+    <div class="card"><img src="images/download2.jpg" alt="Work 3"></div>
+    <div class="card"><img src="images/download3.jpg" alt="Work 4"></div>
 </section>
 
 <section class="trust-section">
     <p>Top companies trust us with their design</p>
     <div class="logo-bar">
-        <div class="logo-item"><img src="logo1.png" alt="TrendLyft"> TrendLyft</div>
+        <div class="logo-item"><img src="images/logo1.png" alt="TrendLyft"> TrendLyft</div>
         <div class="logo-item"><img src="logo2.png" alt="ZenZap"> ZenZap</div>
         <div class="logo-item"><img src="logo3.png" alt="Craftgram"> Craftgram</div>
         <div class="logo-item"><img src="logo4.png" alt="Swift"> swift</div>
         <div class="logo-item"><img src="logo5.png" alt="Sparkle"> sparkle</div>
     </div>
 </section>
-<section class="testimonial-wrapper">
+<section id="about" class="testimonial-wrapper">
     <div class="testimonial-box">
         <p class="quote">
-            <span class="orange">Designpro</span> took my billion-dollar baby idea, slapped their design magic on it, and boom – branding so good it makes my other ventures look like lemonade stands. <span class="orange">Twist</span> isn't just a design agency; they're your ticket to the big leagues.
+            <span class="orange">Designpro</span> took my billion-dollar baby idea...
         </p>
         
         <div class="profile-area">
-            <img src="download4.jpg" class="avatar" alt="Mushaba">
+            <img src="images/download4.jpg" class="avatar" alt="Mushaba">
             <h4>Junior Front-end Developer</h4>
             <p class="name">Mushaba khan</p>
         </div>
     </div>
-</section>
-<section class="services-section">
+</section><section id="services" class="services-section">
     <div class="services-header">
         <span class="badge">↗ Services</span>
         <h2>Apps, websites & branding</h2>
@@ -796,7 +883,7 @@ h4 {
 
     <div class="services-grid">
         <div class="service-card">
-            <div class="card-image"><img src="download2.jpg" alt="Product Design"></div>
+            <div class="card-image"><img src="images/download2.jpg" alt="Product Design"></div>
             <div class="card-content">
                 <h3>Product Design</h3>
                 <p>Our subscription-based design service gives you access to a dedicated team.</p>
@@ -804,7 +891,7 @@ h4 {
         </div>
 
         <div class="service-card">
-            <div class="card-image"><img src="download6.jpg" alt="Graphic Design"></div>
+            <div class="card-image"><img src="images/download6.jpg" alt="Graphic Design"></div>
             <div class="card-content">
                 <h3>Graphic Design</h3>
                 <p>Solve big problems and test new ideas quickly with a design sprint.</p>
@@ -812,7 +899,7 @@ h4 {
         </div>
 
         <div class="service-card">
-            <div class="card-image"><img src="download7.jpg" alt="Marketing Design"></div>
+            <div class="card-image"><img src="images/download7.jpg" alt="Marketing Design"></div>
             <div class="card-content">
                 <h3>Marketing Design</h3>
                 <p>How our subscription-based design service with a team</p>
@@ -864,7 +951,7 @@ h4 {
         </div>
     </div>
 </section>
-<section class="pricing-section">
+<section id="pricing" class="pricing-section">
     <div class="pricing-header">
         <span class="badge">↗ Pricing</span>
         <h2>Choose Your Membership</h2>
@@ -898,7 +985,7 @@ h4 {
         </div>
     </div>
 </section>
-<section class="projects-section">
+<section id="projects" class="projects-section">
     <div class="projects-container">
         <div class="projects-header">
             <span class="badge">↗ Projects</span>
@@ -907,39 +994,40 @@ h4 {
         </div>
 
         <div class="projects-grid">
-            <div class="project-card"><img src="download.jpg" alt="Workflow"></div>
-            <div class="project-card"><img src="download1.jpg" alt="App UI"></div>
-            <div class="project-card"><img src="download2.jpg" alt="Mobile Dashboard"></div>
-            <div class="project-card"><img src="download3.jpg" alt="AI Playlist"></div>
-        </div>
-    </div>
-</section>
-<section class="slider-section">
-    <div class="slider-track">
-        <div class="mini-testimonial">
-            <p>"Financial planning help people to save their money in a smart way even if they don't know how."</p>
-            <div class="user">
-                <img src="download4.jpg" alt="Liane">
-                <div>
-                    <strong>Liane Marie</strong>
-                    <span>Product Designer</span>
-                </div>
-            </div>
-        </div>
-        <div class="mini-testimonial">
-            <p>"Designpro helped us scale our brand faster than we ever thought possible."</p>
-            <div class="user">
-                <img src="download4.jpg" alt="User">
-                <div>
-                    <strong>Alex Smith</strong>
-                    <span>Founder</span>
-                </div>
-            </div>
+            <div class="project-card"><img src="images/download.jpg" alt="Workflow"></div>
+            <div class="project-card"><img src="images/download1.jpg" alt="App UI"></div>
+            <div class="project-card"><img src="images/download2.jpg" alt="Mobile Dashboard"></div>
+            <div class="project-card"><img src="images/download3.jpg" alt="AI Playlist"></div>
         </div>
     </div>
 </section>
 
-<section class="faq-section">
+<section class="slider-section">
+    <div class="slider-container">
+        <!-- Box 1 -->
+        <div class="testimonial-card">
+            <p class="slider-quote">"Financial planners help people to knowledge in about how to invest and in save their moneye the most efficient way eve plan ners help people tioniiio know ledige in about how."</p>
+            <div class="user-info">
+                <img src="images/download4.jpg" alt="User" class="user-avatar">
+                <div class="user-details">
+                    <strong>Zonathon Doe</strong>
+                    <span class="user-title">CEO & Founder X</span>
+                </div>
+            </div>
+        </div>
+        <!-- Box 2 -->
+        <div class="testimonial-card">
+            <p class="slider-quote">"Financial planners help people to knowledge in about how to invest and in save their moneye the most efficient way eve plan ners help people tioniiio know ledige in about how."</p>
+            <div class="user-info">
+                <img src="images/download4.jpg" alt="User" class="user-avatar">
+                <div class="user-details">
+                    <strong>Zonathon Doe</strong>
+                    <span class="user-title">CEO & Founder X</span>
+                </div>
+         
+    </div>
+</section>
+<section id="faq" class="faq-section">
     <div class="faq-header">
         <span class="badge">↗ Faqs</span>
         <h2>Frequently Asked Question</h2>
@@ -960,7 +1048,7 @@ h4 {
 </section>
 <section class="cta-section">
     <div class="cta-box">
-        <h2>See if DesignPro is right for you. (It totally is.)</h2>
+        <h2>See if DesignPro is right for you.(It totally is.)</h2>
         <p>Our team is here to assist you with any issues.</p>
         <button class="cta-btn">Book a free call</button>
         <div class="cta-logo">Designpro</div>
@@ -998,6 +1086,9 @@ h4 {
             </div>
         </div>
     </div>
+</footer>
+<footer class="main-footer">
+    <p>CopyRight <span class="highlight">©Mushaba khan</span> Rights Reserved</p>
 </footer>
 </body>
 
