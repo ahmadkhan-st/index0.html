@@ -3,104 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>DesignPro</title>
     <style>
-     html{
-    scroll-behavior:smooth;
+        /* Enable Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
 }
 
-/* Scroll position fix */
-section{
-    scroll-margin-top:120px;
+/* Fix for Fixed Header: Adjust the scroll position */
+section, header[id] {
+  scroll-margin-top: 110px; 
 }
 
-header{
-    scroll-margin-top:120px;
-}
-        body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #f9f9f9;
+
+/* General Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
+
+/* Flex Utility to keep items on one line */
+.container-flex {
+  display: flex;
+  justify-content: space-between; /* Logo left, Menu right */
+  align-items: center;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* Envato Top Bar */
+/* Black Top Bar */
 .envato-header {
-    background-color: #000;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 5%;
-    height: 40px;
+  background: #000;
+  color: white;
+  padding: 10px 0;
 }
 
-/* Mobile button ko desktop par chhupane ke liye */
-.menu-button {
-    display: none;
-    font-size: 30px;
-    cursor: pointer;
+.buy-now {
+  background: #00a651;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
+/* White Navbar */
+.main-header {
+  background: white;
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+/* THE BLACK PILL (Laptop View) */
+.nav-menu {
+  display: flex;
+  list-style: none;
+  background: #000;
+  padding: 10px 30px;
+  border-radius: 50px;
+}
+
+.nav-menu li a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 14px;
+}
+
+/* HIDE HAMBURGER ON LAPTOP */
+.menu-icon {
+  display: none;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+/* --- MOBILE STYLES --- */
 @media (max-width: 768px) {
-    .menu-button { display: block; } /* Mobile par dikhao */
-    
-    .nav-links {
-        display: none; /* Pehle chhupa hua hoga */
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        background: black;
-        padding: 20px 0;
-    }
+  .menu-icon {
+    display: block; /* Show 3 lines on phone */
+  }
 
-    /* Jab checkbox check ho to menu dikhao */
-    #menu-toggle:checked ~ .nav-links {
-        display: flex;
-    }
-}
+  .nav-menu {
+    display: none; /* Hide black pill on phone */
+    position: absolute;
+    top: 100px;
+    left: 5%;
+    width: 90%;
+    flex-direction: column;
+    border-radius: 20px;
+    padding: 20px;
+    background: #000;
+  }
 
-.buy-btn {
-    background-color: #00a651;
-    color: white;
-    border: none;
-    padding: 5px 15px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-@media (max-width: 768px) {
-    .menu-button {
-        display: block;
-    }
-}
-
-/* White Nav Bar */
-.main-nav {
+  /* Show menu when 3 lines are clicked */
+  #nav-toggle:checked ~ .nav-menu {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 5%;
-    background: white;
-}
-
-.nav-logo {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    background: black;
-    padding: 15px 30px;
-    border-radius: 50px;
-    gap: 20px;
-}
-
-.nav-links li {
-    color: white;
-    cursor: pointer;
+  }
 }
 #about-section {
     scroll-margin-top: 200px; /* This creates a gap so the navbar doesn't cover the text */
@@ -812,51 +814,50 @@ h4 {
     </style>
 </head>
 <body>
-    <body>
-    <div class="envato-header">
-        <div class="logo"><span>🛒</span> envato <span>market</span></div>
-        <button class="buy-btn">Buy Now</button>
+  <div class="envato-header">
+    <div class="container-flex">
+      <div class="envato-logo">🛒 envato market</div>
+      <button class="buy-now">Buy Now</button>
     </div>
+  </div>
 
-<nav class="main-nav">
-    <div class="nav-logo">Designpro</div>
-    <label for="menu-toggle" class="menu-button">☰</label>
+  <header class="main-header">
+    <div class="container-flex">
+      <div class="logo">Designpro</div>
 
-    <ul class="nav-links">
-        <li><a href="#home" style="color:white;text-decoration:none;">Home</a></li>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden>
+      <label for="nav-toggle" class="menu-icon">☰</label>
 
-        <li><a href="#about" style="color:white;text-decoration:none;">About</a></li>
+      <ul class="nav-menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#pricing">Buy</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#faq">Contact</a></li>
+      </ul>
+    </div>
+  </header>
 
-        <li><a href="#services" style="color:white;text-decoration:none;">Buy</a></li>
-
-        <li><a href="#pricing" style="color:white;text-decoration:none;">project</a></li>
-
-        <li><a href="#projects" style="color:white;text-decoration:none;">Contact</a></li>
-
-    </ul>
-</nav>
-
-</section>
-
-   <header id="home" class="hero">
-        <h1>Hire Full-Service Design Agency For A Simple Monthly Fee.</h1>
-        <p>Create your products with top-tier designers at an affordable price. One subscription fee covers unlimited design requests.</p>
-        <div class="hero-btns">
-            <button class="btn-orange">See Pricing Plans</button>
-            <button class="btn-black">Book a free call</button>
-        </div>
+  <header id="home" class="hero">
+    <h1>Hire Full-Service Design Agency For A Simple Monthly Fee.</h1>
+    <p>Create your products with top-tier designers at an affordable price. One subscription fee covers unlimited design requests.</p>
+    <div class="hero-btns">
+      <button class="btn-orange">See Pricing Plans</button>
+      <button class="btn-black">Book a free call</button>
+    </div>
+  </header>
     </header>
     <section class="portfolio">
-    <div class="card"><img src="download.jpg" alt="Work 1"></div>
-    <div class="card"><img src="download1.jpg" alt="Work 2"></div>
-    <div class="card"><img src="download2.jpg" alt="Work 3"></div>
-    <div class="card"><img src="download3.jpg" alt="Work 4"></div>
+    <div class="card"><img src="images/download.jpg" alt="Work 1"></div>
+    <div class="card"><img src="images/download1.jpg" alt="Work 2"></div>
+    <div class="card"><img src="images/download2.jpg" alt="Work 3"></div>
+    <div class="card"><img src="images/download3.jpg" alt="Work 4"></div>
 </section>
 
 <section class="trust-section">
     <p>Top companies trust us with their design</p>
     <div class="logo-bar">
-        <div class="logo-item"><img src="logo1.png" alt="TrendLyft"> TrendLyft</div>
+        <div class="logo-item"><img src="images/logo1.png" alt="TrendLyft"> TrendLyft</div>
         <div class="logo-item"><img src="logo2.png" alt="ZenZap"> ZenZap</div>
         <div class="logo-item"><img src="logo3.png" alt="Craftgram"> Craftgram</div>
         <div class="logo-item"><img src="logo4.png" alt="Swift"> swift</div>
@@ -870,7 +871,7 @@ h4 {
         </p>
         
         <div class="profile-area">
-            <img src="download4.jpg" class="avatar" alt="Mushaba">
+            <img src="images/download4.jpg" class="avatar" alt="Mushaba">
             <h4>Junior Front-end Developer</h4>
             <p class="name">Mushaba khan</p>
         </div>
@@ -883,7 +884,7 @@ h4 {
 
     <div class="services-grid">
         <div class="service-card">
-            <div class="card-image"><img src="download2.jpg" alt="Product Design"></div>
+            <div class="card-image"><img src="images/download2.jpg" alt="Product Design"></div>
             <div class="card-content">
                 <h3>Product Design</h3>
                 <p>Our subscription-based design service gives you access to a dedicated team.</p>
@@ -891,7 +892,7 @@ h4 {
         </div>
 
         <div class="service-card">
-            <div class="card-image"><img src="download6.jpg" alt="Graphic Design"></div>
+            <div class="card-image"><img src="images/download6.jpg" alt="Graphic Design"></div>
             <div class="card-content">
                 <h3>Graphic Design</h3>
                 <p>Solve big problems and test new ideas quickly with a design sprint.</p>
@@ -899,7 +900,7 @@ h4 {
         </div>
 
         <div class="service-card">
-            <div class="card-image"><img src="download7.jpg" alt="Marketing Design"></div>
+            <div class="card-image"><img src="images/download7.jpg" alt="Marketing Design"></div>
             <div class="card-content">
                 <h3>Marketing Design</h3>
                 <p>How our subscription-based design service with a team</p>
@@ -994,11 +995,12 @@ h4 {
         </div>
 
         <div class="projects-grid">
-            <div class="project-card"><img src="download.jpg" alt="Workflow"></div>
-            <div class="project-card"><img src="download1.jpg" alt="App UI"></div>
-            <div class="project-card"><img src="download2.jpg" alt="Mobile Dashboard"></div>
-            <div class="project-card"><img src="download3.jpg" alt="AI Playlist"></div>
-        </div>    </div>
+            <div class="project-card"><img src="images/download.jpg" alt="Workflow"></div>
+            <div class="project-card"><img src="images/download1.jpg" alt="App UI"></div>
+            <div class="project-card"><img src="images/download2.jpg" alt="Mobile Dashboard"></div>
+            <div class="project-card"><img src="images/download3.jpg" alt="AI Playlist"></div>
+        </div>
+    </div>
 </section>
 
 <section class="slider-section">
